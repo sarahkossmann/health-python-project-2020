@@ -1,0 +1,110 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{% url 'home' %}">
+
+      <img src="https://cdn.pixabay.com/photo/2018/04/06/19/39/symbol-3296654_960_720.png" width="25" height="90">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a href="{% url 'home' %}"  class="navbar-item">
+        Home
+      </a>
+
+      {% if request.user.is_staff %}
+          <a href="{% url 'doctor-appointment' %}" class="navbar-item">
+        Your Appointments
+      </a>
+          <a href="#" class="navbar-item">
+        Manage Your Patients
+      </a>
+
+      {% else %}
+      <a href="{% url 'appointment' %}" class="navbar-item">
+        Make an Appointment
+      </a>
+      <a href="{% url 'our-practitioners' %}" class="navbar-item">
+        Our Practitioners
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a href="{% url 'appointment-list' %}" class="navbar-item">
+            My Agenda
+          </a>
+          <a class="navbar-item">
+            My Prescriptions
+          </a>
+          <a href="{% url 'news' %}" class="navbar-item">
+            Medical News
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            x
+          </a>
+
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+
+          {% if request.user.is_authenticated %}
+
+          {% if request.user.is_staff %}
+          <a class="button is-light is-light" href="{% url 'doctor-profile-updated' %}">
+            {{ user.get_full_name }}
+          </a>
+          <a class="button is-danger is-light" href="{% url 'logout' %}">
+            Logout
+          </a>
+
+          {% else %}
+          <a class="button is-light is-light" href="{% url 'profile-updated' %}">
+            {{ user.get_full_name }}
+          </a>
+          <a class="button is-danger is-light" href="{% url 'logout' %}">
+            Logout
+          </a>
+          {% endif %}
+
+
+          {% else %}
+          <a class="button is-light" href="{% url 'user-login' %}">
+            Log in
+          </a>
+          <a class="button is-info" href="{% url 'register' %}">
+            <strong>Register</strong>
+          </a>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</nav>
+
+<style>
+
+.navbar {
+  margin: 20px;
+}
+
+
+</style>

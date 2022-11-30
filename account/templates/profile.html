@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block head %}
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'autocomplete_light/select2.css' %}" />
+    <script type="text/javascript" src="{% static 'autocomplete_light/jquery.init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/autocomplete.init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/select2.js' %}"></script>
+    <link type="text/css" href="{% static 'autocomplete_light/select2.css' %}">
+    <script type="text/javascript" src="{% static 'vendor/select2/dist/js/select2.full.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/forward.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    {{ form.media }}
+    {% endblock head %}
+
+{% block content %}
+<div class="box" xmlns="http://www.w3.org/1999/html">
+<div class="container">
+  <div class="notification">
+    <div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">
+                <span class="icon is-small is-left">
+                     <p><i class="fas fa-id-card"></i>
+                     </p>
+                </span> Update My Medical Data
+            </legend>
+
+<label class="label">
+<!--    <span class="icon is-small is-left">-->
+<!--        <p><i class="fas fa-user-circle"></i></p>-->
+<!--    </span> -->
+    Tz
+</label>
+<div>{{ form.tz }}</div>
+
+
+<label class="label">
+<!--    <span class="icon is-small is-left">-->
+<!--        <p><i class="fas fa-calendar-alt"></i></p>-->
+<!--    </span> -->
+    Birth Date
+</label>
+<div>{{ form.birth_date }}</div>
+
+<label class="label">
+<!--    <span class="icon is-small is-left">-->
+<!--        <p><i class="fas fa-ruler-combined"></i></p>-->
+<!--    </span>-->
+    Height (cm)
+</label>
+<div>{{ form.height }}</div>
+
+<label class="label">
+<!--    <span class="icon is-small is-left">-->
+<!--        <p><i class="fas fa-weight"></i></p>-->
+<!--    </span> -->
+    Weight (kg)
+</label>
+<div>{{ form.weight }}</div>
+
+
+            <div class="field">
+  <label class="label">Blood Type</label>
+  <div class="control">
+    <div class="select">
+        <p class="control has-icons-left">
+    <span class="select">
+        <select name="blood_type">
+<!--         <option>Select blood type</option>-->
+         <option>Select blood type {% for f in form.blood_type %}
+        {{ f }}
+          {% endfor %}
+         </option>
+        </select>
+    </span>
+        <span class="icon is-small is-left">
+      <i class="fas fa-syringe"></i>
+    </span>
+  </p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+            <label class="label">Medical History </label>
+
+            {{ form.medical_history }}
+
+
+
+            <label class="label">Vaccines </label>{{ form.vaccines }}
+
+<!--                {% for f in form %}-->
+<!--                <input type="checkbox">{{ f.vaccines }}</input>-->
+<!--                {% endfor %}-->
+
+
+
+        </fieldset>
+        <div class="field">
+  <div><p class="control">
+    <button class="button is-success" type="submit">
+      Create
+    </button>
+  </p>
+      </div>
+</div>
+
+    </form></div></div></div></div>
+
+
+{% endblock content %}

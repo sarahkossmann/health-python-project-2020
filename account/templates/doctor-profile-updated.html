@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="box" xmlns="http://www.w3.org/1999/html">
+<div class="container">
+  <div class="notification">
+    <div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">
+                <span class="icon is-small is-left">
+                     <p><i class="fas fa-id-card"></i>
+                     </p>
+                </span> My Data
+            </legend>
+
+<label class="label">
+
+    Specialty
+</label>
+<div>{{ user.doctor.specialty }}</div>
+
+<label class="label">
+
+    University
+</label>
+<div>{{ user.doctor.university }}</div>
+
+<label class="label">
+
+    Graduation Year
+</label>
+<div>{{ user.doctor.graduation_year }}</div>
+
+<label class="label">
+
+    Address
+</label>
+<div>{{ user.doctor.address }}</div>
+
+<label class="label">
+    Consultation hours
+</label>
+<label class="label">
+    Sunday
+</label>
+<div>From {{ user.doctor.sunday_hours_from }} to {{ user.doctor.sunday_hours_to }}</div>
+
+<label class="label">
+    Monday
+</label>
+<div>From {{ user.doctor.monday_hours_from }} to {{ user.doctor.monday_hours_to }}</div>
+
+<label class="label">
+    Tuesday
+</label>
+<div>From {{ user.doctor.tuesday_hours_from }} to {{ user.doctor.tuesday_hours_to }}</div>
+
+ <label class="label">
+    Wednesday
+</label>
+<div>From {{ user.doctor.wednesday_hours_from }} to {{ user.doctor.wednesday_hours_to }}</div>
+
+<label class="label">
+    Thursday
+</label>
+<div>From {{ user.doctor.thursday_hours_from }} to {{ user.doctor.thursday_hours_to }}</div>
+
+
+
+<!--<label class="label">-->
+<!--&lt;!&ndash;    <span class="icon is-small is-left">&ndash;&gt;-->
+<!--&lt;!&ndash;        <p><i class="fas fa-calendar-alt"></i></p>&ndash;&gt;-->
+<!--&lt;!&ndash;    </span> &ndash;&gt;-->
+<!--    Birth Date-->
+<!--</label>-->
+<!--<div>{{ user.profile.birth_date }}</div>-->
+
+<!--<label class="label">-->
+<!--&lt;!&ndash;    <span class="icon is-small is-left">&ndash;&gt;-->
+<!--&lt;!&ndash;        <p><i class="fas fa-ruler-combined"></i></p>&ndash;&gt;-->
+<!--&lt;!&ndash;    </span>&ndash;&gt;-->
+<!--    Height (cm)-->
+<!--</label>-->
+<!--<div>{{ user.profile.height }}</div>-->
+
+<!--<label class="label">-->
+<!--&lt;!&ndash;    <span class="icon is-small is-left">&ndash;&gt;-->
+<!--&lt;!&ndash;        <p><i class="fas fa-weight"></i></p>&ndash;&gt;-->
+<!--&lt;!&ndash;    </span> &ndash;&gt;-->
+<!--    Weight (kg)-->
+<!--</label>-->
+<!--<div>{{ user.profile.weight }}</div>-->
+
+
+
+<!--  <label class="label">Blood Type</label>-->
+<!--<div>{{ user.profile.blood_type }}-->
+<!--</div>-->
+
+
+
+
+
+<!--            <label class="label">Medical History </label>-->
+<!--{% for history in user.profile.medical_history.all %}-->
+<!--            <div>{{ history.description }}</div>-->
+
+<!--{% endfor %}-->
+
+<!--            <label class="label">Vaccines </label>-->
+<!--            <div>{{ user.profile.vaccines }}</div>-->
+
+
+
+        </fieldset>
+        <div class="field">
+  <div><p class="control">
+    <a href="{% url 'doctor-profile' %}" class="button is-success" type="submit">
+      Update my data
+    </a>
+  </p>
+      </div>
+</div>
+
+    </form></div></div></div></div>
+{% endblock content %}

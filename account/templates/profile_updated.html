@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="box" xmlns="http://www.w3.org/1999/html">
+<div class="container">
+  <div class="notification">
+    <div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">
+                <span class="icon is-small is-left">
+                     <p><i class="fas fa-id-card"></i>
+                     </p>
+                </span> My Medical Data
+            </legend>
+
+<label class="label">
+<!--    <span class="icon is-small is-left">-->
+<!--        <p><i class="fas fa-user-circle"></i></p>-->
+<!--    </span> -->
+    Tz
+</label>
+<div>{{ user.patient.tz }}</div>
+
+
+<label class="label">
+<!--    <span class="icon is-small is-left">-->
+<!--        <p><i class="fas fa-calendar-alt"></i></p>-->
+<!--    </span> -->
+    Birth Date
+</label>
+<div>{{ user.patient.birth_date }}</div>
+
+<label class="label">
+<!--    <span class="icon is-small is-left">-->
+<!--        <p><i class="fas fa-ruler-combined"></i></p>-->
+<!--    </span>-->
+    Height (cm)
+</label>
+<div>{{ user.patient.height }}</div>
+
+<label class="label">
+<!--    <span class="icon is-small is-left">-->
+<!--        <p><i class="fas fa-weight"></i></p>-->
+<!--    </span> -->
+    Weight (kg)
+</label>
+<div>{{ user.patient.weight }}</div>
+
+
+
+  <label class="label">Blood Type</label>
+<div>{{ user.patient.blood_type }}
+</div>
+
+
+
+
+
+            <label class="label">Medical History </label>
+{% for history in user.patient.medical_history.all %}
+            <div>{{ history.description }}</div>
+
+{% endfor %}
+
+            <label class="label">Vaccines </label>
+            <div>{{ user.patient.vaccines }}</div>
+
+
+
+        </fieldset>
+        <div class="field">
+  <div><p class="control">
+    <a href="{% url 'profile' %}" class="button is-success" type="submit">
+      Update my data
+    </a>
+  </p>
+      </div>
+</div>
+
+    </form></div></div></div></div>
+{% endblock content %}

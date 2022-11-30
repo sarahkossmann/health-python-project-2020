@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<article class="message is-success">
+  <div class="message-body">
+      <h2>Your request has been submitted</h2>
+  </div>
+</article>
+
+        <small class="text-muted">
+
+            <a href="{% url 'appointment-list' %}"><i class="fas fa-calendar-alt"></i>  Go to my agenda</a>
+        </small>
+
+
+
+{% endblock content %}

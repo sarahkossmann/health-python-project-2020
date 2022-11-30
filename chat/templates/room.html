@@ -1,0 +1,154 @@
+<!--{% extends 'base.html' %}-->
+<!--{% load static %}-->
+
+
+<!--{% block content %}-->
+
+
+<!--<div class="content">-->
+<!--		<div class="contact-profile">-->
+
+<!--			<p>Some User</p>-->
+
+<!--		</div>-->
+
+<!--    <div class="messages">-->
+<!--			<ul id="chat-log">-->
+<!--				<li class="sent">-->
+<!--					<p>Some message</p>-->
+<!--				</li>-->
+<!--				<li class="replies">-->
+<!--					<p>Another message</p>-->
+<!--				</li>-->
+<!--            </ul>-->
+<!--    </div>-->
+
+
+<!--        <div class="message-input">-->
+<!--			<div class="wrap">-->
+<!--			<input type="text" placeholder="Write your message..." />-->
+
+<!--			<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--</div>-->
+
+
+<!--&lt;!&ndash;    <textarea id="chat-log" cols="100" rows="20"></textarea><br>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input id="chat-message-input" type="text" size="100"><br>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input id="chat-message-submit" type="button" value="Send">&ndash;&gt;-->
+<!--    <script src="{% static 'reconnecting-websocket.js' %}"></script>-->
+<!--&lt;!&ndash;    {{ room_name|json_script:"room-name" }}&ndash;&gt;-->
+<!--    <script>-->
+<!--&lt;!&ndash;        const roomName = JSON.parse(document.getElementById('room-name').textContent);&ndash;&gt;-->
+<!--        const roomName = {{ room_name_json }};-->
+<!--        const username = {{ username }};-->
+
+<!--        const chatSocket = new ReconnectingWebSocket(-->
+<!--            'ws://'-->
+<!--            + window.location.host-->
+<!--            + '/ws/chat/'-->
+<!--            + roomName-->
+<!--            + '/'-->
+<!--        );-->
+
+<!--        chatSocket.onmessage = function(e) {-->
+<!--            const data = JSON.parse(e.data);-->
+<!--            const message = data['message'];-->
+<!--            const author = message['author'];-->
+<!--            const msgListTag = document.createElement('li');-->
+<!--            const pTag = document.createElement('p');-->
+<!--            pTag.textContent = message.content;-->
+<!--            if (author == username) {-->
+<!--                msgListTag.className = 'sent';-->
+<!--            } else {-->
+<!--            msgListTag.className = 'replies';-->
+<!--            }-->
+<!--            msgListTag.appendChild(pTag);-->
+<!--            document.querySelector('#chat-log').appendChild(msgListTag);-->
+
+<!--&lt;!&ndash;            value += (data.message + '\n');&ndash;&gt;-->
+<!--        };-->
+
+<!--        chatSocket.onclose = function(e) {-->
+<!--            console.error('Chat socket closed unexpectedly');-->
+<!--        };-->
+
+<!--        document.querySelector('#chat-message-input').focus();-->
+<!--        document.querySelector('#chat-message-input').onkeyup = function(e) {-->
+<!--            if (e.keyCode === 13) {  // enter, return-->
+<!--                document.querySelector('#chat-message-submit').click();-->
+<!--            }-->
+<!--        };-->
+
+<!--        document.querySelector('#chat-message-submit').onclick = function(e) {-->
+<!--            const messageInputDom = document.querySelector('#chat-message-input');-->
+<!--            const message = messageInputDom.value;-->
+<!--            chatSocket.send(JSON.stringify({-->
+<!--                'message': message,-->
+<!--                'command':'new_message'-->
+<!--                'from': username-->
+<!--            }));-->
+<!--            messageInputDom.value = '';-->
+<!--        };-->
+<!--    </script>-->
+<!--<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>-->
+<!--<script >$(".messages").animate({ scrollTop: $(document).height() }, "fast");-->
+
+<!--$("#profile-img").click(function() {-->
+<!--	$("#status-options").toggleClass("active");-->
+<!--});-->
+
+<!--$(".expand-button").click(function() {-->
+<!--  $("#profile").toggleClass("expanded");-->
+<!--	$("#contacts").toggleClass("expanded");-->
+<!--});-->
+
+<!--$("#status-options ul li").click(function() {-->
+<!--	$("#profile-img").removeClass();-->
+<!--	$("#status-online").removeClass("active");-->
+<!--	$("#status-away").removeClass("active");-->
+<!--	$("#status-busy").removeClass("active");-->
+<!--	$("#status-offline").removeClass("active");-->
+<!--	$(this).addClass("active");-->
+
+<!--	if($("#status-online").hasClass("active")) {-->
+<!--		$("#profile-img").addClass("online");-->
+<!--	} else if ($("#status-away").hasClass("active")) {-->
+<!--		$("#profile-img").addClass("away");-->
+<!--	} else if ($("#status-busy").hasClass("active")) {-->
+<!--		$("#profile-img").addClass("busy");-->
+<!--	} else if ($("#status-offline").hasClass("active")) {-->
+<!--		$("#profile-img").addClass("offline");-->
+<!--	} else {-->
+<!--		$("#profile-img").removeClass();-->
+<!--	};-->
+
+<!--	$("#status-options").removeClass("active");-->
+<!--});-->
+
+<!--function newMessage() {-->
+<!--	message = $(".message-input input").val();-->
+<!--	if($.trim(message) == '') {-->
+<!--		return false;-->
+<!--	}-->
+<!--	$('<li class="sent"><img src="#" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));-->
+<!--	$('.message-input input').val(null);-->
+<!--	$('.contact.active .preview').html('<span>You: </span>' + message);-->
+<!--	$(".messages").animate({ scrollTop: $(document).height() }, "fast");-->
+<!--};-->
+
+<!--$('.submit').click(function() {-->
+<!--  newMessage();-->
+<!--});-->
+
+<!--$(window).on('keydown', function(e) {-->
+<!--  if (e.which == 13) {-->
+<!--    newMessage();-->
+<!--    return false;-->
+<!--  }-->
+<!--});-->
+<!--//# sourceURL=pen.js-->
+<!--</script>-->
+
+<!--{% endblock content %}-->

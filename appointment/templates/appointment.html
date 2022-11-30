@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{{form.media}}
+{% block content %}
+
+<div class="box">
+<div class="container">
+  <div class="notification">
+<div class="content-section">
+
+
+
+
+        <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+                       <legend class="border-bottom mb-4"><span class="icon is-small is-left">
+                           <div><i class="fas fa-stethoscope"></i></div>
+    </span>  Set an Appointment</legend>
+
+
+
+
+            <div class="field">
+  <label class="label">Choose a Practitioner</label>
+  <div class="control">
+    <div class="select">
+        <p class="control has-icons-left">
+    <span class="select">
+        <select name="doctor">
+
+         <option> {% for f in form.doctor %}
+         {{ f }}
+          {% endfor %}
+         </option>
+        </select>
+    </span>
+        <span class="icon is-small is-left">
+      <i class="fas fa-user-md"></i>
+    </span>
+  </p>
+    </div>
+  </div>
+
+
+
+
+
+
+<label class="label">Phone Number</label>
+<div>{{ form.phone_number}}
+</div>
+<label class="label">Choose a first date and time option</label>
+<div>
+    {{ form.booking_date1_date}}
+</div>
+                <div>
+    {{ form.booking_date1_time}}
+</div>
+<label class="label">Choose a second date and time option</label>
+<div>{{ form.booking_date2_date}}
+</div>
+                <div>{{ form.booking_date2_time}}
+</div>
+<label class="label">Additional Notes</label>
+<div>{{ form.note}}
+</div>
+            </div>
+
+        </fieldset>
+             <p class="control">
+    <button class="button is-success" type="submit">
+      Submit!
+    </button></p>
+    </form>
+
+
+
+
+</div>
+
+  </div>
+
+</div>
+
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-section">
+
+       <legend class="border-bottom mb-4">
+                <span class="icon is-small is-left">
+                     <p><i class="fas fa-ban"></i>
+                     </p>
+                </span> Cancel Appointment
+            </legend>
+            <h2>Are you sure you want to cancel your appointment ?</h2>
+        </fieldset>
+    <p><a href="{% url 'cancel' a.pk %}" class="button is-danger" type="submit">
+      Yes, Cancel
+    </a>
+    <a href="{% url 'appointment-list' %}" class="button is-light" type="submit">
+      No, back to my agenda
+    </a></p>
+</div>
+
+{% endblock %}

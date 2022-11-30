@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block head %}
+
+    {% endblock head %}
+
+{% block content %}
+<div class="box" xmlns="http://www.w3.org/1999/html">
+<div class="container">
+  <div class="notification">
+    <div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">
+                <span class="icon is-small is-left">
+                     <p><i class="fas fa-id-card"></i>
+                     </p>
+                </span> Update My Data
+            </legend>
+
+<label class="label">
+    Specialty
+</label>
+<div>{{ form.specialty }}</div>
+
+<label class="label">
+    University
+</label>
+<div>{{ form.university }}</div>
+
+<label class="label">
+    Graduation year
+</label>
+<div>{{ form.graduation_year }}</div>
+
+<label class="label">
+    Address
+</label>
+<div>{{ form.address }}</div>
+
+<label class="label">
+    Consultation hours
+</label>
+<label class="label">
+    Sunday
+</label>
+<div>From {{ form.sunday_hours_from }} to {{ form.sunday_hours_to }}</div>
+
+<label class="label">
+    Monday
+</label>
+<div>From {{ form.monday_hours_from }} to {{ form.monday_hours_to }}</div>
+
+<label class="label">
+    Tuesday
+</label>
+<div>From {{ form.tuesday_hours_from }} to {{ form.tuesday_hours_to }}</div>
+
+<label class="label">
+    Wednesday
+</label>
+<div>From {{ form.wednesday_hours_from }} to {{ form.wednesday_hours_to }}</div>
+
+<label class="label">
+    Thursday
+</label>
+<div>From {{ form.thursday_hours_from }} to {{ form.thursday_hours_to }}</div>
+
+        </fieldset>
+        <div class="field">
+  <div><p class="control">
+    <button class="button is-success" type="submit">
+      Create
+    </button>
+  </p>
+      </div>
+</div>
+
+    </form></div></div></div></div>
+
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'autocomplete_light/select2.css' %}" />
+    <script type="text/javascript" src="{% static 'autocomplete_light/jquery.init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/autocomplete.init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/select2.js' %}"></script>
+    <link type="text/css" src="{% static 'autocomplete_light/select2.css' %}">
+    <script type="text/javascript" src="{% static 'vendor/select2/dist/js/select2.full.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/forward.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+<!--    {{ form.media }}-->
+{% endblock content %}

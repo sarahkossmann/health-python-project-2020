@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="box" xmlns="http://www.w3.org/1999/html">
+<div class="container">
+  <div class="notification">
+    <div class="content-section">
+
+<legend class="border-bottom mb-4">
+                <span class="icon is-small is-left">
+                     <p><i class="fas fa-calendar-alt"></i>
+                     </p>
+                </span> My Agenda
+            </legend>
+<div class="row">
+{% for a in appointments %}
+
+<div class="card card col-lg-3 m-2 col-sm-5" >
+
+  <div class="card-body">
+    <h5 class="card-title">Appointment with {{ a.doctor }}</h5>
+    <p class="card-text">On {{a.booking_date2_date}} at {{a.booking_date2_time}}</p>
+      <a href="{% url 'confirm-cancel-appointment' a.id %}" class="button is-danger" type="submit">
+      Cancel
+    </a></p>
+<!--    <a href="#" class="btn btn-primary">Go somewhere</a>-->
+  </div>
+</div>
+
+{% endfor %}
+</div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+{% endblock content %}
